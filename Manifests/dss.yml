@@ -1,4 +1,18 @@
 ---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: yelp-camp-secrets
+type: Opaque
+data:
+  CLOUDINARY_CLOUD_NAME=ZGFuN2pzdzFzCg==
+  CLOUDINARY_KEY=NjM2NzI3NjU1MjM3NDIxCg==
+  CLOUDINARY_SECRET=ajdBd3k0WWJMWjVGaGt1TlN2a3R4MzdfU1pNCg==
+  MAPBOX_TOKEN=bDFkSG95WTNaa1lTSjkuRmM2ZmZGYS1WSm9lNkhUdXRneVFfQQo=
+  DB_URL=bW9uZ29kYitzcnY6Ly9ha3NoYXltYW5kcmUxMTE6UzJSWU1RczdlZU1oVVhySkBkZXZvcHMuemFucjMubW9uZ29kYi5uZXQvP3JldHJ5V3JpdGVzPXRydWUmdz1tYWpvcml0eSZhcHBOYW1lPURldk9wcwo=
+  SECRET=RGV2T3BzCg==
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -20,23 +34,35 @@ spec:
             - containerPort: 3000
           env:
             - name: CLOUDINARY_CLOUD_NAME
-              value: dan7jsw1s
-              
+              valueFrom:
+                secretKeyRef:
+                  name: yelp-camp-secrets
+                  key: CLOUDINARY_CLOUD_NAME
             - name: CLOUDINARY_KEY
-              value: 636727655237421
-            
+              valueFrom:
+                secretKeyRef:
+                  name: yelp-camp-secrets
+                  key: CLOUDINARY_KEY
             - name: CLOUDINARY_SECRET
-              value: j7Awy4YbLZ5FhkuNSvktx37_SZM
-            
+              valueFrom:
+                secretKeyRef:
+                  name: yelp-camp-secrets
+                  key: CLOUDINARY_SECRET
             - name: MAPBOX_TOKEN
-              value: sk.eyJ1IjoiYWtzaGF5a20xMTEiLCJhIjoiY20zeXczN3BvMXJ6MzJqczl1dHoyY3ZkYSJ9.Fc6ffFa-VJoe6HTutgyQ_A
-      
+              valueFrom:
+                secretKeyRef:
+                  name: yelp-camp-secrets
+                  key: MAPBOX_TOKEN
             - name: DB_URL
-              value: "mongodb+srv://akshaymandre111:S2RYMQs7eeMhUXrJ@devops.zanr3.mongodb.net/?retryWrites=true&w=majority&appName=DevOps"
-              
+              valueFrom:
+                secretKeyRef:
+                  name: yelp-camp-secrets
+                  key: DB_URL
             - name: SECRET
-              value: DevOps
-          
+              valueFrom:
+                secretKeyRef:
+                  name: yelp-camp-secrets
+                  key: SECRET
           livenessProbe:
             httpGet:
               path: /

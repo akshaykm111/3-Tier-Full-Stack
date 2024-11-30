@@ -28,7 +28,7 @@ spec:
             - name: MAPBOX_TOKEN
               value: "sk.eyJ1IjoiYWtzaGF5a20xMTEiLCJhIjoiY20zeXczN3BvMXJ6MzJqczl1dHoyY3ZkYSJ9.Fc6ffFa-VJoe6HTutgyQ_A"
             - name: DB_URL
-              value: ""mongodb+srv://akshaymandre111:S2RYMQs7eeMhUXrJ@devops.zanr3.mongodb.net/?retryWrites=true&w=majority&appName=DevOps""
+              value: "mongodb+srv://akshaymandre111:S2RYMQs7eeMhUXrJ@devops.zanr3.mongodb.net/?retryWrites=true&w=majority&appName=DevOps"
             - name: SECRET
               value: "DevOps"
           livenessProbe:
